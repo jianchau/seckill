@@ -11,13 +11,15 @@ const {
 	payBtnOptions,
 	checkoutBtnTextOptions,
 	loginBtnTextOptions,
-	timeWaitToPayOptions
+	timeWaitToPayOptions,
+	JD,
+	TaoBao
 } = require("./config.js");
 
 const driver = new selenium.Builder().forBrowser("chrome").build();
 
-const platformName = "jd";
-const buyTime = "2023-06-04 23:42:00";
+const platformName = JD;
+const buyTime = "2023-06-05 09:15:00";
 
 // 最大化浏览器
 driver.manage().window().maximize();
@@ -40,14 +42,12 @@ const login = async () => {
 	await sleep(20);
 	const cartLocation = mapLabelToValue(cartLocationOptions, platformName);
 	driver.get(cartLocation);
-	await sleep(8);
+	await sleep(3);
 	//   点击全选按钮
 	const selectAllBtnObj = mapLabelToObj(selectAllBtnOptions, platformName);
 	const locator = By[selectAllBtnObj.byWay](selectAllBtnObj.value);
 	const ele = await driver.findElement(locator);
-	console.log("是否全选 ---", ele, ele.target);
 	ele.click();
-
 	console.log("登录成功：", dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss"));
 	await sleep(2);
 	buy(buyTime);
@@ -62,7 +62,7 @@ const buy = async (buyTime) => {
 			const locator = By.linkText(checkoutBtnText);
 			if (driver.findElement(locator)) driver.findElement(locator).click();
 			await sleep(mapLabelToValue(timeWaitToPayOptions, platformName));
-			// submit();
+			submit();
 			break;
 		}
 	}
@@ -76,7 +76,6 @@ const submit = async () => {
 		const eles = await driver.findElements(locator);
 
 		if (Array.isArray(eles) && eles.length > 0) {
-			console.log("ele ---", eles);
 			driver.findElement(locator).click();
 			console.log("抢购时间：", dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss"));
 			await sleep(1000);

@@ -1,3 +1,6 @@
+const JD = "jd";
+const TaoBao = "taobao";
+
 const object = {
 	mapValueToLabel: (options, value) => {
 		let ret;
@@ -23,75 +26,74 @@ const object = {
 		}
 		return ret;
 	},
+	JD,
+	TaoBao,
 	platformLocationOptions: [
-		{ label: "jd", value: "https://www.jd.com" },
-		{
-			label: "taobao",
-			value: "https://www.taobao.com"
-		}
+		{ label: JD, value: "https://www.JD.com" },
+		{ label: TaoBao, value: "https://www.taobao.com" }
 	],
 	cartLocationOptions: [
 		{
-			label: "jd",
-			value: "https://cart.jd.com/cart_index"
+			label: JD,
+			value: "https://cart.JD.com/cart_index"
 		},
 		{
-			label: "taobao",
+			label: TaoBao,
 			value: "https://cart.taobao.com/cart.htm"
 		}
 	],
 	loginBtnTextOptions: [
 		{
-			label: "jd",
+			label: JD,
 			value: "你好，请登录"
 		},
 		{
-			label: "taobao",
+			label: TaoBao,
 			value: "亲，请登录"
 		}
 	],
 	selectAllBtnOptions: [
 		{
-			label: "jd",
+			label: JD,
 			value: "jdcheckbox",
 			byWay: "className"
 		},
 		{
-			label: "taobao",
+			label: TaoBao,
 			value: "J_SelectAll1",
 			byWay: "id"
 		}
 	],
 	checkoutBtnTextOptions: [
 		{
-			label: "jd",
+			label: JD,
 			value: "去结算"
 		},
 		{
-			label: "taobao",
+			label: TaoBao,
 			value: "去结算"
 		}
 	],
 	payBtnOptions: [
 		{
-			label: "jd",
+			label: JD,
 			value: "order-submit",
 			byWay: "id"
 		},
 		{
-			label: "taobao",
+			label: TaoBao,
 			value: "提交订单",
 			byWay: "linkText"
 		}
 	],
 	timeWaitToPayOptions: [
 		{
-			label: "jd",
-			value: "0.4"
+			label: JD,
+			value: "0.1"
 		},
 		{
-			label: "taobao",
-			value: "0.2"
+			label: TaoBao,
+			value: "0.1"
 		}
 	]
 };
